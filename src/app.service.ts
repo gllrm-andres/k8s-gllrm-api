@@ -6,6 +6,6 @@ export class AppService {
   constructor(private configService: ConfigService) {}
 
   getHello(): string {
-    return process.env.NODE_ENV;
+    return `ENV: ${process.env.NODE_ENV}`;
   }
 }
