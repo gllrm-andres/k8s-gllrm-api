@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  gllrmapi:
+    image: gllrmapi
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+  database:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD : Gsolano
+      POSTGRES_USER: postgres
+      POSTGRES_DB: gllrm_prod
+    volumes:
+      - 'K:/projects/k8s/volumes/pg:/var/lib/postgresql/data'
+    ports:
+      - 5432:5432

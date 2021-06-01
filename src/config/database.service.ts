@@ -7,6 +7,8 @@ export class DatabaseService implements TypeOrmOptionsFactory {
   constructor(private configService: ConfigService) {}
 
   createTypeOrmOptions(): TypeOrmModuleOptions {
+    console.log(this.configService.get('PG_HOST'));
+
     return {
       type: 'postgres',
       host: this.configService.get('PG_HOST'),
